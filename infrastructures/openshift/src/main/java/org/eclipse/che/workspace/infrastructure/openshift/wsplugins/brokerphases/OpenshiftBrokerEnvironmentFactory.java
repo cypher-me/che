@@ -27,7 +27,7 @@ import org.eclipse.che.workspace.infrastructure.kubernetes.wsplugins.brokerphase
 import org.eclipse.che.workspace.infrastructure.openshift.environment.OpenShiftEnvironment;
 import org.eclipse.che.workspace.infrastructure.openshift.project.OpenShiftProject;
 import org.eclipse.che.workspace.infrastructure.openshift.project.OpenShiftProjectFactory;
-import org.eclipse.che.workspace.infrastructure.openshift.provision.Openshift4TrustedCAProvisioner;
+import org.eclipse.che.workspace.infrastructure.openshift.provision.OpenshiftTrustedCAProvisioner;
 
 /**
  * Extends {@link KubernetesBrokerEnvironmentFactory} to be used in the openshift infrastructure.
@@ -39,7 +39,7 @@ public class OpenshiftBrokerEnvironmentFactory
 
   private final String caCertificatesMountPath;
   private final String metadataBrokerImage;
-  private final Openshift4TrustedCAProvisioner trustedCAProvisioner;
+  private final OpenshiftTrustedCAProvisioner trustedCAProvisioner;
   private final OpenShiftProjectFactory factory;
 
   @Inject
@@ -54,7 +54,7 @@ public class OpenshiftBrokerEnvironmentFactory
       @Named("che.infra.openshift.trusted_ca_bundles_mount_path") String caCertificatesMountPath,
       CertificateProvisioner certProvisioner,
       OpenShiftProjectFactory factory,
-      Openshift4TrustedCAProvisioner trustedCAProvisioner) {
+      OpenshiftTrustedCAProvisioner trustedCAProvisioner) {
     super(
         cheWebsocketEndpoint,
         brokerPullPolicy,
